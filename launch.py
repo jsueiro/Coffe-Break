@@ -1,9 +1,10 @@
-from tabnanny import filename_only
+import webbrowser
 import requests
 from bs4 import BeautifulSoup
-import pprint
 from tabulate import tabulate
 import sys
+from functools import partial
+
 
 # think of requests as the browser who grabs the url
 res = requests.get('https://news.ycombinator.com/news')
@@ -25,7 +26,7 @@ all_subtexts = subtext + subtext2
 
 
 def sort_stories_by_votes(hnlist):
-    # sort dict in list with lambda by key
+
     return sorted(hnlist, key=lambda k: k['votes'], reverse=True)
 
 
@@ -42,18 +43,34 @@ def create_custom_hn(links, subtext):
         if len(vote):
             points = int(vote[0].getText().replace(' points', ''))
             if points > 99:
-                hn.append({'title': title, 'link': href, 'votes': points})
+                hn.append(
+                    {'Title': links[idx], 'votes': points})
 
     return sort_stories_by_votes(hn)
 
 
 table = create_custom_hn(all_links, all_subtexts)
-# pprint.pprint(table)
 
-html_table = tabulate(table, headers='keys', tablefmt='html')
-
-print(html_table)
+html_table = tabulate(table, headers='keys', tablefmt='unsafehtml')
 
 fileout = open('html-table.html', 'w')
+
+html_body = """
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Coffe Break</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></head><body>
+
+"""
+
+html_footer = """
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> <script src="js/main.js"></script> <script src="js/main.js"></script>
+    <script>
+        apply();
+    </script>  </body></html>
+"""
+
+fileout.writelines(html_body)
 fileout.writelines(html_table)
+fileout.writelines(html_footer)
 fileout.close()
+
+webbrowser.open('index.html')
