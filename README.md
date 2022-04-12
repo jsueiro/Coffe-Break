@@ -9,3 +9,6 @@ Current WIP:
 - [x] Added args so that it can be executed from command line by passing how many minutes the timer should wait until the coffee break 
 - [x] Included Windows desktop notification that when clicked, opens the news page
 - [] API read to gather weather information based on browser geolocalization
+
+
+To run it, use: timer.py 45 (where 45 is the minutes until your break). 
