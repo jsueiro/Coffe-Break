@@ -16,7 +16,7 @@ def show_notification():
 
 
 while True:
-    time.sleep(5)  # 2700
+    time.sleep(2700)  # 2700
     update_file()
     show_notification()
     time.sleep(600)
