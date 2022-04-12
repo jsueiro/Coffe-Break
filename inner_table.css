@@ -1,0 +1,47 @@
+table {
+    font-family: 'Lato', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: rgb(222, 227, 237);
+}
+
+table td,
+table th {
+    border: 0px;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #2f3437;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+table th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+table th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+
+a {
+    color: rgb(222, 227, 237);
+    text-decoration: none;
+}
+
+a:visited {
+    color: #797c7e;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(242, 180, 115);
+}

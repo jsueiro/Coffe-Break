@@ -1,19 +1,34 @@
 
-function apply() {
-    // Add new class to existing classes
+function apply_style() {
     var p = document.querySelector("table");
     p.classList.add("table");
-    p.classList.add("table-hover");
-    p.classList.add("table-sm");
 
+    var links = document.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].setAttribute('target', '_blank');
+    }
 
-    var q = document.querySelector("a");
-    q.classList.replace('titlelink', 'link-secondary')
+};
 
-    Array.prototype.forEach.call(document.getElementsByTagName('a'), function (element) {
-        element.classList.replace('titlelink', 'link-secondary');
-    });
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
 
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
+        display.textContent = minutes + ":" + seconds;
 
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
 };
