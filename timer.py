@@ -16,8 +16,7 @@ def show_notification():
                      duration=30, callback_on_click=launch_page)
 
 
-seconds = (int(sys.argv[1]) * 60) if int(sys.argv[1]) > 0 else 2700
-
+seconds = (int(sys.argv[1]) * 60) if len(sys.argv) > 1 else 2700
 
 while True:
     time.sleep(seconds)  # 2700
