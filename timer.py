@@ -16,6 +16,7 @@ def show_notification():
                      duration=30, callback_on_click=launch_page)
 
 
+# if no minutes are passed by args, 45 minutes are the default
 seconds = (int(sys.argv[1]) * 60) if len(sys.argv) > 1 else 2700
 
 while True:
