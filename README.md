@@ -1,6 +1,6 @@
 # Coffe-Break
 Coffe Break is a small experiment that groups BeautifulSoup from Python and a basic page (HTML5, CSS, JS). 
-It creates a small local page that gathers the latest news from Hacker News (with more than 99 votes) to be read during a coffee break. 
+It creates a local site that gathers the latest news from Hacker News (with more than 99 votes) to be read during a coffee break. 
 
 Simple, no ads, no nothing. Lots to improve of course as this is a basic app.
 
